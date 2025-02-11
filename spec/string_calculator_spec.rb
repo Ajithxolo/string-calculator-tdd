@@ -78,5 +78,12 @@ RSpec.describe StringCalculator do
         expect(result).to eq(5)
       end
     end
+
+    context 'when the input is a string with a complex custom delimiter and multiple numbers' do
+      it 'returns the sum' do
+        result = calculator.add('//[***]\n1***2***3')
+        expect(result).to eq(6)
+      end
+    end
   end
 end
