@@ -19,5 +19,11 @@ RSpec.describe StringCalculator do
         expect(calculator.add('1,2')).to eq(3)
       end
     end
+
+    context 'when the input is a string of three-digit numbers separated by commas' do
+      it 'returns the sum' do
+        expect(calculator.add('1,123,999')).to eq(1123)
+      end
+    end
   end
 end
