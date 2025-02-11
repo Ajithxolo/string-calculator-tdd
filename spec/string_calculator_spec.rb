@@ -31,5 +31,11 @@ RSpec.describe StringCalculator do
         expect(calculator.add('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0')).to eq(0)
       end
     end
+
+    context 'when the input is a string of numbers separated by commas and newline characters' do
+      it 'returns the sum' do
+        expect(calculator.add("11\n52,6")).to eq(69)
+      end
+    end
   end
 end
