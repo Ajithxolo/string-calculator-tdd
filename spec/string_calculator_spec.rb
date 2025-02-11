@@ -37,5 +37,11 @@ RSpec.describe StringCalculator do
         expect(calculator.add("11\n52,6")).to eq(69)
       end
     end
+
+    context 'when the input is a string with a custom delimiter and two 3-digit numbers' do
+      it 'returns the sum' do
+        expect(calculator.add("//;\n100;129")).to eq(229)
+      end
+    end
   end
 end
