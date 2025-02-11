@@ -7,5 +7,11 @@ RSpec.describe StringCalculator do
         expect(calculator.add('')).to eq(0)
       end
     end
+
+    context 'when the input is a string with a single number' do
+      it 'returns the same number' do
+        expect(calculator.add('1')).to eq(1)
+      end
+    end
   end
 end
