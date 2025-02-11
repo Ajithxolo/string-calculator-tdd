@@ -71,5 +71,12 @@ RSpec.describe StringCalculator do
         expect{calculator.add("-1,-2,-3")}.to raise_error(described_class::NegativeNumberError, "negative numbers are not allowed -1, -2, -3")
       end
     end
+
+    context 'when input is a string with special conditions' do
+      it 'returns the sum excluding numbers greater than 1000' do
+        result = calculator.add('2,3,1001')
+        expect(result).to eq(5)
+      end
+    end
   end
 end
