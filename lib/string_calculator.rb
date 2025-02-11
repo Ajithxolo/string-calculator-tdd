@@ -8,7 +8,7 @@ class StringCalculator
   def add(numbers)
     return 0 if numbers.empty?
     delimiter, numbers = parse_input(numbers)
-    validate_negatives!(numbers) if numbers.include?("-")
+    validate_negatives!(numbers)
     calculate_sum(numbers, delimiter)
   end
 
@@ -16,8 +16,9 @@ class StringCalculator
 
   def parse_input(numbers)
     return [",", numbers] unless numbers.start_with?("//")
-    delimiter, numbers = numbers.split("\n")
-    parsed_delimiter = delimiter[2..-1]
+    delimiter, numbers = numbers.gsub("\\n", "\n").split("\n")
+    has_custom_delimiter = delimiter.match?(/\[.*\]/)
+    parsed_delimiter = has_custom_delimiter ? delimiter[3..-2] : delimiter[2..-1]
     [parsed_delimiter, numbers]
   end
 
