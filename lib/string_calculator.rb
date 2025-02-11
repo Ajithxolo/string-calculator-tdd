@@ -23,11 +23,16 @@ class StringCalculator
 
   def calculate_sum(numbers, delimiter)
     regex = /#{Regexp.escape(delimiter)}|\n/
-    numbers.split(regex).map(&:to_i).sum 
+    parsed_numbers = numbers.split(regex).map(&:to_i)
+    numbers = reject_large_numbers(parsed_numbers).sum 
   end
 
   def validate_negatives!(numbers)
     negative_numbers = numbers.scan(/-\d+/)
     raise NegativeNumberError, negative_numbers if negative_numbers.any?
+  end
+
+  def reject_large_numbers(numbers)
+    numbers.reject { |num| num > 1000 }
   end
 end
