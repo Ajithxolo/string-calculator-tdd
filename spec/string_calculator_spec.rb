@@ -49,5 +49,15 @@ RSpec.describe StringCalculator do
         expect(calculator.add("//;\n10;20")).to eq(30)
       end
     end
+
+    context 'when the input is a string with an arbitrary number of numbers' do
+      it 'returns the sum' do
+        numbers = Array.new(100) { rand(1..100) }
+        string = numbers.join(',')
+        expected_sum = numbers.sum
+        result = calculator.add(string)
+        expect(result).to eq(expected_sum)
+      end
+    end
   end
 end
