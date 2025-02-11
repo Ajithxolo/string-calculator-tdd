@@ -25,5 +25,11 @@ RSpec.describe StringCalculator do
         expect(calculator.add('1,123,999')).to eq(1123)
       end
     end
+
+    context 'when the input is a string of multiple zeros separated by commas' do
+      it 'returns zero' do
+        expect(calculator.add('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0')).to eq(0)
+      end
+    end
   end
 end
