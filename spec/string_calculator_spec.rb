@@ -85,5 +85,12 @@ RSpec.describe StringCalculator do
         expect(result).to eq(6)
       end
     end
+
+    context 'when the input has *' do
+      it 'returns a product' do 
+        result = calculator.add("3*5*2,1")
+        expect(result).to eq(31)
+      end
+    end
   end
 end
